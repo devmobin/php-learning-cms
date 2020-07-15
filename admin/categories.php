@@ -42,6 +42,31 @@
                                     <input class="btn btn-success" name="submit" type="submit" value="Add">
                                 </div>
                             </form>
+
+                            <?php // EDIT CATEGORY
+                                // TODO
+                            ?>
+
+                            <?php // DISPLAY EDIT CATEGORY FORM
+                                if (isset($_GET['edit'])) {
+                                    $id = $_GET['edit'];
+                                    $query = "SELECT * FROM categories WHERE id = {$id}";
+                                    $sql_query = mysqli_query($connection, $query);
+
+                                    while ($row = mysqli_fetch_assoc($sql_query)) {
+                                        $id = $row['id'];
+                                        $title = $row['title'];
+                            ?>
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <label for="title">Category Title</label>
+                                        <input class="form-control" name="title" type="text" value="<?php echo $title ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="btn btn-warning" name="update" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                            <?php } } ?>
                         </div>
 
                         <div class="col-xs-6">
@@ -63,7 +88,8 @@
                                             echo "<tr>";
                                             echo "<td>{$id}</td>";
                                             echo "<td>{$title}</td>";
-                                            echo "<td><a class='btn btn-danger btn-sm' href='categories.php?delete={$id}'>Delete</a></td>";
+                                            echo "<td><div class='btn-group'><a class='btn btn-danger btn-sm' href='categories.php?delete={$id}'>Delete</a>";
+                                            echo "<a class='btn btn-warning btn-sm' href='categories.php?edit={$id}'>Edit</a></div></td>";
                                             echo "</tr>";
                                         }
                                     ?>
