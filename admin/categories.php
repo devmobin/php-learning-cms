@@ -16,7 +16,7 @@
                         </h1>
 
                         <div class="col-xs-6">
-                            <?php
+                            <?php // ADD NEW CATEGORY
                                 if (isset($_POST['submit'])) {
                                     $title = $_POST['title'];
 
@@ -29,6 +29,7 @@
                                         if (!$sql_query) {
                                             die('Failed' . mysqli_error($connection));
                                         }
+                                        header('Location: categories.php');
                                     }
                                 }
                             ?>
@@ -48,9 +49,10 @@
                                 <thead>
                                     <th>ID</th>
                                     <th>Category Title</th>
+                                    <th>Actions</th>
                                 </thead>
                                 <tbody>
-                                    <?php
+                                    <?php // FIND ALL CATEGORIES
                                         $query = "SELECT * FROM categories";
                                         $sql_query = mysqli_query($connection, $query);
 
@@ -58,7 +60,11 @@
                                             $id = $row['id'];
                                             $title = $row['title'];
 
-                                            echo "<tr><td>{$id}</td><td>{$title}</td></tr>";
+                                            echo "<tr>";
+                                            echo "<td>{$id}</td>";
+                                            echo "<td>{$title}</td>";
+                                            echo "<td><a class='btn btn-danger btn-sm' href='categories.php?delete={$id}'>Delete</a></td>";
+                                            echo "</tr>";
                                         }
                                     ?>
                                 </tbody>
@@ -69,6 +75,17 @@
                 </div> <!-- /.row -->
             </div> <!-- /.container-fluid -->
         </div> <!-- /#page-wrapper -->
+
+        <?php // DELETE CATEGORY
+
+            if (isset($_GET['delete'])) {
+                $id = $_GET['delete'];
+                $query = "DELETE FROM categories WHERE id = {$id}";
+                $sql_query = mysqli_query($connection, $query);
+                header('Location: categories.php');
+            }
+
+        ?>
 
     </div>
     <!-- /#wrapper -->
