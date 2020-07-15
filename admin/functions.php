@@ -37,6 +37,17 @@ function find_all_categories() {
     }
 }
 
+function find_one_category() {
+    global $connection;
+    if (isset($_GET['edit'])) {
+        $id = $_GET['edit'];
+        $query = "SELECT * FROM categories WHERE id = {$id}";
+        $sql_query = mysqli_query($connection, $query);
+
+        return mysqli_fetch_assoc($sql_query);
+    }
+}
+
 function edit_category() {
     global $connection;
     if (isset($_POST['update'])) {

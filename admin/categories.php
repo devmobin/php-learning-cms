@@ -31,13 +31,8 @@
 
                             <?php // DISPLAY EDIT CATEGORY FORM
                                 if (isset($_GET['edit'])) {
-                                    $id = $_GET['edit'];
-                                    $query = "SELECT * FROM categories WHERE id = {$id}";
-                                    $sql_query = mysqli_query($connection, $query);
-
-                                    while ($row = mysqli_fetch_assoc($sql_query)) {
-                                        $id = $row['id'];
-                                        $title = $row['title'];
+                                    $row = find_one_category();
+                                    $title = $row['title'];
                             ?>
                                 <form action="" method="post">
                                     <div class="form-group">
@@ -48,7 +43,7 @@
                                         <input class="btn btn-warning" name="update" type="submit" value="Edit">
                                     </div>
                                 </form>
-                            <?php } } ?>
+                            <?php } ?>
                         </div>
 
                         <div class="col-xs-6">
