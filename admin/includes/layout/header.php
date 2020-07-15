@@ -30,4 +30,4 @@
 </head>
 
 <body>
-
+<?php include_once '../includes/db.php'; ?>
