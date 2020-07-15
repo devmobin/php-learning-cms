@@ -84,16 +84,7 @@
             </div> <!-- /.container-fluid -->
         </div> <!-- /#page-wrapper -->
 
-        <?php // DELETE CATEGORY
-
-            if (isset($_GET['delete'])) {
-                $id = $_GET['delete'];
-                $query = "DELETE FROM categories WHERE id = {$id}";
-                $sql_query = mysqli_query($connection, $query);
-                header('Location: categories.php');
-            }
-
-        ?>
+        <?php delete_category(); ?>
 
     </div>
     <!-- /#wrapper -->

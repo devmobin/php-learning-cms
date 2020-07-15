@@ -38,3 +38,13 @@ function edit_category() {
         }
     }
 }
+
+function delete_category() {
+    global $connection;
+    if (isset($_GET['delete'])) {
+        $id = $_GET['delete'];
+        $query = "DELETE FROM categories WHERE id = {$id}";
+        $sql_query = mysqli_query($connection, $query);
+        header('Location: categories.php');
+    }
+}
