@@ -27,6 +27,28 @@
                             </form>
                         </div>
 
+                        <div class="col-xs-6">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>Category Title</th>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $query = "SELECT * FROM categories";
+                                        $sql_query = mysqli_query($connection, $query);
+
+                                        while ($row = mysqli_fetch_assoc($sql_query)) {
+                                            $id = $row['id'];
+                                            $title = $row['title'];
+
+                                            echo "<tr><td>{$id}</td><td>{$title}</td></tr>";
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div> <!-- /.row -->
             </div> <!-- /.container-fluid -->
