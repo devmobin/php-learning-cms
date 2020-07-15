@@ -16,23 +16,7 @@
                         </h1>
 
                         <div class="col-xs-6">
-                            <?php // ADD NEW CATEGORY
-                                if (isset($_POST['submit'])) {
-                                    $title = $_POST['title'];
-
-                                    if ($title == '' || empty($title)) {
-                                        echo '<h5>Enter a title</h5>';
-                                    } else {
-                                        $query = "INSERT INTO categories(title) VALUE('{$title}')";
-                                        $sql_query = mysqli_query($connection, $query);
-
-                                        if (!$sql_query) {
-                                            die('Failed' . mysqli_error($connection));
-                                        }
-                                        header('Location: categories.php');
-                                    }
-                                }
-                            ?>
+                            <?php insert_category(); ?>
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="title">Category Title</label>
