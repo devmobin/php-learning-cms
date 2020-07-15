@@ -19,6 +19,24 @@ function insert_category() {
     }
 }
 
+function find_all_categories() {
+    global $connection;
+    $query = "SELECT * FROM categories";
+    $sql_query = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($sql_query)) {
+        $id = $row['id'];
+        $title = $row['title'];
+
+        echo "<tr>";
+        echo "<td>{$id}</td>";
+        echo "<td>{$title}</td>";
+        echo "<td><div class='btn-group'><a class='btn btn-danger btn-sm' href='categories.php?delete={$id}'>Delete</a>";
+        echo "<a class='btn btn-warning btn-sm' href='categories.php?edit={$id}'>Edit</a></div></td>";
+        echo "</tr>";
+    }
+}
+
 function edit_category() {
     global $connection;
     if (isset($_POST['update'])) {
