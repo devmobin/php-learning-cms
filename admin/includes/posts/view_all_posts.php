@@ -23,7 +23,12 @@
                 echo "<td>{$row['id']}</td>";
                 echo "<td>{$row['author']}</td>";
                 echo "<td>{$row['title']}</td>";
-                echo "<td>{$row['category']}</td>";
+
+                $category_query = "SELECT * FROM categories WHERE id = {$row['category']}";
+                $category_sql_query = mysqli_query($connection, $category_query);
+                $category = mysqli_fetch_assoc($category_sql_query);
+                echo "<td>{$category['title']}</td>";
+
                 echo "<td>{$row['status']}</td>";
                 echo "<td><img class='img-responsive' width='100' src='../images/{$row['image']}' alt='{$row['title']}'></td>";
                 echo "<td>{$row['tags']}</td>";
