@@ -30,8 +30,8 @@ function find_all_categories() {
         echo "<td>{$id}</td>";
         echo "<td>{$title}</td>";
         echo "<td><div class='btn-group'>";
-        echo "<a class='btn btn-danger btn-sm' href='categories.php?delete={$id}'>Delete</a>";
         echo "<a class='btn btn-warning btn-sm' href='categories.php?edit={$id}'>Edit</a>";
+        echo "<a class='btn btn-danger btn-sm' href='categories.php?delete={$id}'>Delete</a>";
         echo "</div></td>";
         echo "</tr>";
     }
