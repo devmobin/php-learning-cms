@@ -15,26 +15,26 @@
     </thead>
     <tbody>
         <?php // GET ALL POSTS
-        $query = "SELECT * FROM posts";
-        $sql_query = mysqli_query($connection, $query);
+            $query = "SELECT * FROM posts";
+            $sql_query = mysqli_query($connection, $query);
 
-        while ($row = mysqli_fetch_assoc($sql_query)) {
-            echo "<tr>";
-            echo "<td>{$row['id']}</td>";
-            echo "<td>{$row['author']}</td>";
-            echo "<td>{$row['title']}</td>";
-            echo "<td>{$row['category']}</td>";
-            echo "<td>{$row['status']}</td>";
-            echo "<td><img class='img-responsive' width='100' src='../images/{$row['image']}' alt='{$row['title']}'></td>";
-            echo "<td>{$row['tags']}</td>";
-            echo "<td>{$row['comments_count']}</td>";
-            echo "<td>{$row['date']}</td>";
-            echo "<td><div class='btn-group'>";
-            echo "<a class='btn btn-warning btn-sm' href='posts.php?source=edit_post&edit={$row['id']}'>Edit</a>";
-            echo "<a class='btn btn-danger btn-sm' href='posts.php?delete={$row['id']}'>Delete</a>";
-            echo "</div></td>";
-            echo "</tr>";
-        }
+            while ($row = mysqli_fetch_assoc($sql_query)) {
+                echo "<tr>";
+                echo "<td>{$row['id']}</td>";
+                echo "<td>{$row['author']}</td>";
+                echo "<td>{$row['title']}</td>";
+                echo "<td>{$row['category']}</td>";
+                echo "<td>{$row['status']}</td>";
+                echo "<td><img class='img-responsive' width='100' src='../images/{$row['image']}' alt='{$row['title']}'></td>";
+                echo "<td>{$row['tags']}</td>";
+                echo "<td>{$row['comments_count']}</td>";
+                echo "<td>{$row['date']}</td>";
+                echo "<td><div class='btn-group'>";
+                echo "<a class='btn btn-warning btn-sm' href='posts.php?source=edit_post&edit={$row['id']}'>Edit</a>";
+                echo "<a class='btn btn-danger btn-sm' href='posts.php?delete={$row['id']}'>Delete</a>";
+                echo "</div></td>";
+                echo "</tr>";
+            }
         ?>
     </tbody>
 </table>
