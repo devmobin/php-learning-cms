@@ -1,7 +1,20 @@
+<?php // CREATE COMMENT
+    if (isset($_POST['create_comment'])) {
+        $post_id = $_GET['id'];
+
+        $query = "INSERT INTO comments (post, author, email, content, status, date) ";
+        $query .= "VALUES ('{$post_id}', '{$_POST['author']}', '{$_POST['email']}', '{$_POST['content']}', 'unapproved', now())";
+        $sql_query = mysqli_query($connection, $query);
+
+        if (!$sql_query) {
+            die('Failed ' . mysqli_error($connection));
+        }
+    }
+?>
 <!-- Comments Form -->
 <div class="well">
     <h4>Leave a Comment:</h4>
-    <form action="#" method="post" role="form">
+    <form action="" method="post" role="form">
         <div class="form-group">
             <label for="author">Author</label>
             <input type="text" name="author" class="form-control" name="comment_author">
