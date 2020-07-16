@@ -10,6 +10,7 @@
             <th>Tags</th>
             <th>Comments</th>
             <th>Date</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -28,8 +29,20 @@
             echo "<td>{$row['tags']}</td>";
             echo "<td>{$row['comments_count']}</td>";
             echo "<td>{$row['date']}</td>";
+            echo "<td><a class='btn btn-danger btn-sm' href='posts.php?delete={$row['id']}'>Delete</a></td>";
             echo "</tr>";
         }
         ?>
     </tbody>
 </table>
+
+<?php // DELETE POST
+    if (isset($_GET['delete'])) {
+        $id = $_GET['delete'];
+
+        $query = "DELETE FROM posts WHERE id = {$id}";
+        $sql_query = mysqli_query($connection, $query);
+        confirm_query($sql_query);
+        header('Location: posts.php');
+    }
+?>
