@@ -55,7 +55,7 @@
                     $id = $row['id'];
                     $title = $row['title'];
 
-                    echo "<option value='$id'>{$title}</option>";
+                    echo "<option value='{$id}'>{$title}</option>";
                 }
             ?>
         </select>
@@ -86,6 +86,7 @@
     </div>
 
     <div class="form-group">
+        <label for="status">Post Status</label>
         <select class="form-control" name="status" id="">
             <option value="draft">Post Status</option>
             <option value="published">Published</option>
