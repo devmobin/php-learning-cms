@@ -1,3 +1,33 @@
+<?php // HANDLE EDIT FORM SUBMIT
+    if (isset($_POST['edit_post'])) {
+        move_uploaded_file($_FILES['image']['tmp_name'], "../images/{$_FILES['image']['name']}" );
+
+        $query = "UPDATE posts SET ";
+        $query .="title = '{$_POST['title']}', ";
+        $query .="category = '{$_POST['category']}', ";
+        $query .="date = now(), ";
+        $query .="author = '{$_POST['author']}', ";
+        $query .="status = '{$_POST['status']}', ";
+        $query .="tags = '{$_POST['tags']}', ";
+        $query .="content = '{$_POST['content']}', ";
+
+        if (empty($_FILES['image']['name'])) {
+            $image_query = "SELECT image FROM posts WHERE id = {$_GET['edit']}";
+            $image_sql_query = mysqli_query($connection, $image_query);
+            $row = mysqli_fetch_assoc($image_sql_query);
+            $query .="image = '{$row['image']}' ";
+        } else {
+            $query .="image = '{$_FILES['image']['name']}' ";
+        }
+        $query .= "WHERE id = {$_GET['edit']} ";
+
+        $sql_query = mysqli_query($connection, $query);
+
+        confirm_query($sql_query);
+
+    }
+?>
+
 <?php // GET EDITING POST FROM THE DATABASE
     if (isset($_GET['edit'])) {
         $id = $_GET['edit'];
