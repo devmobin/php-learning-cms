@@ -31,7 +31,7 @@
 
                 echo "<td>{$row['date']}</td>";
                 echo "<td><div class='btn-group btn-group-vertical'>";
-                echo "<a class='btn btn-primary btn-sm' href=''>Approve</a>";
+                echo "<a class='btn btn-primary btn-sm' href='comments.php?approve={$row['id']}'>Approve</a>";
                 echo "<a class='btn btn-warning btn-sm' href='comments.php?deny={$row['id']}'>Deny</a>";
                 echo "<a class='btn btn-danger btn-sm' href='comments.php?delete={$row['id']}'>Delete</a>";
                 echo "</div></td>";
@@ -40,6 +40,19 @@
         ?>
     </tbody>
 </table>
+
+<?php // APPROVE COMMENT
+if (isset($_GET['approve'])) {
+    $id = $_GET['approve'];
+
+    $query = "UPDATE comments SET status = 'approved' WHERE id = {$id}";
+    $sql_query = mysqli_query($connection, $query);
+    if (!$sql_query) {
+        die('Failed ' . mysqli_error($connection));
+    }
+    header('Location: comments.php');
+}
+?>
 
 <?php // DENY COMMENT
 if (isset($_GET['deny'])) {
