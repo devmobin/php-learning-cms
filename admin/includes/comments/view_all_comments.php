@@ -33,10 +33,23 @@
                 echo "<td><div class='btn-group btn-group-vertical'>";
                 echo "<a class='btn btn-primary btn-sm' href=''>Approve</a>";
                 echo "<a class='btn btn-warning btn-sm' href=''>Deny</a>";
-                echo "<a class='btn btn-danger btn-sm' href=''>Delete</a>";
+                echo "<a class='btn btn-danger btn-sm' href='comments.php?delete={$row['id']}'>Delete</a>";
                 echo "</div></td>";
                 echo "</tr>";
             }
         ?>
     </tbody>
 </table>
+
+<?php // DELETE COMMENT
+if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+
+    $query = "DELETE FROM comments WHERE id = {$id}";
+    $sql_query = mysqli_query($connection, $query);
+    if (!$sql_query) {
+        die('Failed ' . mysqli_error($connection));
+    }
+    header('Location: comments.php');
+}
+?>
