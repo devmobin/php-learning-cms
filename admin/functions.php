@@ -1,5 +1,5 @@
 <?php
-
+// // // // // CATEGORIES PAGE FUNCTIONS
 function insert_category() {
     global $connection;
     if (isset($_POST['submit'])) {
@@ -11,9 +11,7 @@ function insert_category() {
             $query = "INSERT INTO categories(title) VALUE('{$title}')";
             $sql_query = mysqli_query($connection, $query);
 
-            if (!$sql_query) {
-                die('Failed' . mysqli_error($connection));
-            }
+            confirm_query($sql_query);
             header('Location: categories.php');
         }
     }
@@ -62,9 +60,7 @@ function edit_category() {
             $query = "UPDATE categories SET title = '{$title}' WHERE id = '{$id}'";
             $sql_query = mysqli_query($connection, $query);
 
-            if (!$sql_query) {
-                die('Failed' . mysqli_error($connection));
-            }
+            confirm_query($sql_query);
             header('Location: categories.php');
         }
     }
@@ -76,6 +72,15 @@ function delete_category() {
         $id = $_GET['delete'];
         $query = "DELETE FROM categories WHERE id = {$id}";
         $sql_query = mysqli_query($connection, $query);
+        confirm_query($sql_query);
         header('Location: categories.php');
+    }
+}
+
+// // // // // HELPER FUNCTIONS
+function confirm_query($sql_query) {
+    global $connection;
+    if (!$sql_query) {
+        die('Failed' . mysqli_error($connection));
     }
 }
