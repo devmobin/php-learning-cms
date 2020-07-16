@@ -14,7 +14,23 @@
                             Welcome admin
                             <small>Author</small>
                         </h1>
-<!--                        TODO-->
+
+                        <?php // DISPLAY CORRECT PAGE
+                            if (isset($_GET['source'])) {
+                                $source = $_GET['source'];
+                            } else {
+                                $source = '';
+                            }
+                            switch ($source) {
+                                case 'add_post':
+                                    include 'includes/posts/add_posts.php';
+                                    break;
+
+                                default:
+                                    include 'includes/posts/view_all_posts.php';
+                            }
+                        ?>
+
                     </div>
                 </div> <!-- /.row -->
             </div> <!-- /.container-fluid -->
