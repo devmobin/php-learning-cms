@@ -26,6 +26,10 @@
                                     include 'includes/posts/add_posts.php';
                                     break;
 
+                                case 'edit_post':
+                                    include 'includes/posts/edit_posts.php';
+                                    break;
+
                                 default:
                                     include 'includes/posts/view_all_posts.php';
                             }
