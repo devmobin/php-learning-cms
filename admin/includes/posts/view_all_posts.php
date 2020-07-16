@@ -29,7 +29,10 @@
             echo "<td>{$row['tags']}</td>";
             echo "<td>{$row['comments_count']}</td>";
             echo "<td>{$row['date']}</td>";
-            echo "<td><a class='btn btn-danger btn-sm' href='posts.php?delete={$row['id']}'>Delete</a></td>";
+            echo "<td><div class='btn-group'>";
+            echo "<a class='btn btn-warning btn-sm' href='posts.php?source=edit_post&edit={$row['id']}'>Edit</a>";
+            echo "<a class='btn btn-danger btn-sm' href='posts.php?delete={$row['id']}'>Delete</a>";
+            echo "</div></td>";
             echo "</tr>";
         }
         ?>
