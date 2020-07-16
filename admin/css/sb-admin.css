@@ -24,7 +24,8 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #fff;
+    background-color: #333;
+    color: #fff;
 }
 
 .huge {
@@ -221,4 +222,8 @@ ul.alert-dropdown {
 
 .panel-yellow a:hover {
     color: #df8a13;
+}
+
+.table-hover>tbody>tr:hover {
+    background-color: #555!important;
 }
