@@ -27,7 +27,7 @@
                 $post_query = "SELECT * FROM posts WHERE id = {$row['post']}";
                 $post_sql_query = mysqli_query($connection, $post_query);
                 $post = mysqli_fetch_assoc($post_sql_query);
-                echo "<td>{$post['title']}</td>";
+                echo "<td><a href='../post.php?id={$post['id']}'>{$post['title']}</a></td>";
 
                 echo "<td>{$row['date']}</td>";
                 echo "<td><div class='btn-group btn-group-vertical'>";
