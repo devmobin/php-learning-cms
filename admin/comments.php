@@ -22,13 +22,13 @@
                                 $source = '';
                             }
                             switch ($source) {
-                                case 'add_post':
-                                    include 'includes/posts/add_posts.php';
-                                    break;
-
-                                case 'edit_post':
-                                    include 'includes/posts/edit_posts.php';
-                                    break;
+//                                case 'add_post':
+//                                    include 'includes/posts/add_posts.php';
+//                                    break;
+//
+//                                case 'edit_post':
+//                                    include 'includes/posts/edit_posts.php';
+//                                    break;
 
                                 default:
                                     include 'includes/comments/view_all_comments.php';
