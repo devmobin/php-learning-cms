@@ -1,6 +1,13 @@
 <?php // INSERT USER
     if (isset($_POST['create_user'])) {
+        $query = "INSERT INTO users (username, firstname, lastname, email, role, password, image) ";
 
+        $query .= "VALUES('{$_POST['username']}', '{$_POST['firstname']}', '{$_POST['lastname']}', '{$_POST['email']}', '{$_POST['role']}', '{$_POST['password']}', 'none') ";
+
+        $sql_query = mysqli_query($connection, $query);
+
+        confirm_query($sql_query);
+        header('Location: users.php');
     }
 ?>
 
