@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <?php // GET ALL POSTS
-            $query = "SELECT * FROM comments";
+            $query = "SELECT * FROM comments ORDER BY id DESC";
             $sql_query = mysqli_query($connection, $query);
 
             while ($row = mysqli_fetch_assoc($sql_query)) {
