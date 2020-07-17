@@ -25,7 +25,8 @@
                 echo "<td>{$row['role']}</td>";
                 echo "<td><div class='btn-group btn-group-vertical'>";
                 echo "<a class='btn btn-primary btn-sm' href='users.php?role_admin={$row['id']}'>Admin</a>";
-                echo "<a class='btn btn-warning btn-sm' href='users.php?role_sub={$row['id']}'>Subscriber</a>";
+                echo "<a class='btn btn-default btn-sm' href='users.php?role_sub={$row['id']}'>Subscriber</a>";
+                echo "<a class='btn btn-warning btn-sm' href='users.php?source=edit_user&edit={$row['id']}'>Edit</a>";
                 echo "<a class='btn btn-danger btn-sm' href='users.php?delete={$row['id']}'>Delete</a>";
                 echo "</div></td>";
                 echo "</tr>";
