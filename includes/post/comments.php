@@ -37,20 +37,36 @@
 
 <!-- Posted Comments -->
 
-<!-- Comment -->
-<div class="media">
-    <a class="pull-left" href="#">
-        <img class="media-object" src="http://placehold.it/64x64" alt="">
-    </a>
-    <div class="media-body">
-        <h4 class="media-heading">Start Bootstrap
-            <small>August 25, 2014 at 9:30 PM</small>
-        </h4>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+<?php // GET COMMENTS
+    $post_id = $_GET['id'];
+    $query = "SELECT * FROM comments WHERE post = {$post_id} ";
+    $query .= "AND status = 'approved' ";
+    $query .= "ORDER BY date DESC ";
+
+    $sql_query = mysqli_query($connection, $query);
+
+    if (!$sql_query) {
+        die('Failed ' . mysqli_error($connection));
+    }
+
+    while ($row = mysqli_fetch_assoc($sql_query)) {
+?>
+    <!-- Comment -->
+    <div class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="http://placehold.it/64x64" alt="comment">
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading"><?php echo $row['author'] ?>
+                <small><?php echo $row['date'] ?></small>
+            </h4>
+            <?php echo $row['content'] ?>
+        </div>
     </div>
-</div>
+<?php } ?>
 
 <!-- Comment -->
+<!--
 <div class="media">
     <a class="pull-left" href="#">
         <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -60,7 +76,7 @@
             <small>August 25, 2014 at 9:30 PM</small>
         </h4>
         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        <!-- Nested Comment -->
+        <!- Nested Comment --
         <div class="media">
             <a class="pull-left" href="#">
                 <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -72,6 +88,7 @@
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
             </div>
         </div>
-        <!-- End Nested Comment -->
+        <!- End Nested Comment --
     </div>
 </div>
+-->
