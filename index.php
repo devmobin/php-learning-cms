@@ -17,7 +17,7 @@
                 </h1>
 
                 <?php
-                    $query = "SELECT * FROM posts";
+                    $query = "SELECT * FROM posts WHERE status = 'published' ";
                     $sql_query = mysqli_query($connection, $query);
 
                     while ($row = mysqli_fetch_assoc($sql_query)) {

@@ -20,7 +20,7 @@
                     if (isset($_GET['id'])) {
                         $category_id = $_GET['id'];
 
-                        $query = "SELECT * FROM posts WHERE category = {$category_id}";
+                        $query = "SELECT * FROM posts WHERE category = {$category_id} AND status = 'published' ";
                         $sql_query = mysqli_query($connection, $query);
 
                         while ($row = mysqli_fetch_assoc($sql_query)) {
