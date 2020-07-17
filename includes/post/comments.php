@@ -9,6 +9,11 @@
         if (!$sql_query) {
             die('Failed ' . mysqli_error($connection));
         }
+
+        // increase the comments count
+        $comments_count_query = "UPDATE posts SET comments_count = comments_count + 1 ";
+        $comments_count_query .= "WHERE id = {$post_id}";
+        $comments_count_sql_query = mysqli_query($connection, $comments_count_query);
     }
 ?>
 <!-- Comments Form -->
