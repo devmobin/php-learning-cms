@@ -42,40 +42,40 @@
 </table>
 
 <?php // APPROVE COMMENT
-if (isset($_GET['approve'])) {
-    $id = $_GET['approve'];
+    if (isset($_GET['approve'])) {
+        $id = $_GET['approve'];
 
-    $query = "UPDATE comments SET status = 'approved' WHERE id = {$id}";
-    $sql_query = mysqli_query($connection, $query);
-    if (!$sql_query) {
-        die('Failed ' . mysqli_error($connection));
+        $query = "UPDATE comments SET status = 'approved' WHERE id = {$id}";
+        $sql_query = mysqli_query($connection, $query);
+        if (!$sql_query) {
+            die('Failed ' . mysqli_error($connection));
+        }
+        header('Location: comments.php');
     }
-    header('Location: comments.php');
-}
 ?>
 
 <?php // DENY COMMENT
-if (isset($_GET['deny'])) {
-    $id = $_GET['deny'];
+    if (isset($_GET['deny'])) {
+        $id = $_GET['deny'];
 
-    $query = "UPDATE comments SET status = 'denied' WHERE id = {$id}";
-    $sql_query = mysqli_query($connection, $query);
-    if (!$sql_query) {
-        die('Failed ' . mysqli_error($connection));
+        $query = "UPDATE comments SET status = 'denied' WHERE id = {$id}";
+        $sql_query = mysqli_query($connection, $query);
+        if (!$sql_query) {
+            die('Failed ' . mysqli_error($connection));
+        }
+        header('Location: comments.php');
     }
-    header('Location: comments.php');
-}
 ?>
 
 <?php // DELETE COMMENT
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
+    if (isset($_GET['delete'])) {
+        $id = $_GET['delete'];
 
-    $query = "DELETE FROM comments WHERE id = {$id}";
-    $sql_query = mysqli_query($connection, $query);
-    if (!$sql_query) {
-        die('Failed ' . mysqli_error($connection));
+        $query = "DELETE FROM comments WHERE id = {$id}";
+        $sql_query = mysqli_query($connection, $query);
+        if (!$sql_query) {
+            die('Failed ' . mysqli_error($connection));
+        }
+        header('Location: comments.php');
     }
-    header('Location: comments.php');
-}
 ?>
