@@ -114,7 +114,15 @@
                                                 <i class="fa fa-list fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class='huge'>13</div>
+                                                <div class='huge'>
+                                                    <?php
+                                                        $query = "SELECT * FROM posts";
+                                                        $sql_query = mysqli_query($connection, $query);
+
+                                                        $categories_count = mysqli_num_rows($sql_query);
+                                                        echo $categories_count;
+                                                    ?>
+                                                </div>
                                                 <div>Categories</div>
                                             </div>
                                         </div>
