@@ -31,6 +31,12 @@
 
 <body>
 <?php ob_start(); ?>
-<?php session_start(); ?>
+<?php session_start();
+    if (isset($_SESSION['user_role'])) {
+        if ($_SESSION['user_role'] !== 'admin') {
+            header("Location: ../index.php");
+        }
+    }
+?>
 <?php include_once '../includes/db.php'; ?>
 <?php include 'functions.php'; ?>
