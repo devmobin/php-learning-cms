@@ -1,4 +1,5 @@
 <?php include 'db.php';
+    session_start();
 
     if (isset($_POST['login'])) {
         $username = mysqli_real_escape_string($connection, $_POST['username']);
@@ -18,6 +19,11 @@
         }
 
         if ($username == $user['username'] && $password == $user['password']) {
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['firstname'] = $user['firstname'];
+            $_SESSION['lastname'] = $user['lastname'];
+            $_SESSION['user_role'] = $user['role'];
+
             header("Location: ../admin");
         } else {
             header("Location: ../index.php");
