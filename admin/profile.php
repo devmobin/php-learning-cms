@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="btn btn-warning" type="submit" name="edit_user" value="Save">
+                                    <input class="btn btn-warning" type="submit" name="edit_profile" value="Save">
                                 </div>
                             </form>
                         <?php }
@@ -82,6 +82,28 @@
             </div> <!-- /.row -->
         </div> <!-- /.container-fluid -->
     </div> <!-- /#page-wrapper -->
+
+    <?php // HANDLE EDIT FORM SUBMIT
+    if (isset($_POST['edit_profile'])) {
+        $query = "UPDATE users SET ";
+        $query .="username = '{$_POST['username']}', ";
+        $query .="firstname = '{$_POST['firstname']}', ";
+        $query .="lastname = '{$_POST['lastname']}', ";
+        $query .="email = '{$_POST['email']}', ";
+        $query .="role = '{$_POST['role']}', ";
+        $query .="password = '{$_POST['password']}' ";
+        $query .= "WHERE username = '{$_SESSION['username']}' ";
+
+        $sql_query = mysqli_query($connection, $query);
+
+        confirm_query($sql_query);
+        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['firstname'] = $_POST['firstname'];
+        $_SESSION['lastname'] = $_POST['lastname'];
+        $_SESSION['user_role'] = $_POST['role'];
+        header('Location: profile.php');
+    }
+    ?>
 
 </div><!-- /#wrapper -->
 
