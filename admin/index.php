@@ -84,7 +84,15 @@
                                                 <i class="fa fa-user fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class='huge'>23</div>
+                                                <div class='huge'>
+                                                    <?php
+                                                        $query = "SELECT * FROM users";
+                                                        $sql_query = mysqli_query($connection, $query);
+
+                                                        $users_count = mysqli_num_rows($sql_query);
+                                                        echo $users_count;
+                                                    ?>
+                                                </div>
                                                 <div> Users</div>
                                             </div>
                                         </div>
