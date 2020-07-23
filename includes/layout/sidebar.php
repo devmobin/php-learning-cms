@@ -26,7 +26,7 @@
             <div class="input-group">
                 <input name="password" type="password" class="form-control" placeholder="Password">
                 <span class="input-group-btn">
-                    <button class="btn btn-block btn-primary" name="login" type="submit">Login</button
+                    <button class="btn btn-block btn-primary" name="login" type="submit">Login</button>
                 </span>
             </div>
         </form>
