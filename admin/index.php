@@ -138,6 +138,10 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div id="columnchart_material" style="width: 100%; height: 500px;"></div>
+                        </div>
+
                     </div>
                 </div> <!-- /.row -->
             </div> <!-- /.container-fluid -->
@@ -145,6 +149,43 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Count'],
+                <?php
+                    $element_text = ['Active Posts', 'Categories', 'Users', 'Comments'];
+                    $element_count = [$posts_count, $categories_count, $users_count, $comments_count];
+
+                    for ($i = 0; $i < sizeof($element_count); $i++) {
+                        echo "['{$element_text[$i]}', {$element_count[$i]}],";
+                    }
+                ?>
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Website reports',
+                    subtitle: 'Posts, Comments, and Users: This Year',
+                },
+                backgroundColor: '#333',
+                textStyle: {
+                    color: '#fff'
+                },
+                chartArea: {
+                    backgroundColor: '#555'
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
 
 <?php include 'includes/layout/footer.php'; ?>
 
