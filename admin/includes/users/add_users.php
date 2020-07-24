@@ -7,7 +7,7 @@
         $sql_query = mysqli_query($connection, $query);
 
         confirm_query($sql_query);
-        header('Location: users.php');
+        echo "<p class='alert alert-success'>User Created: <a class='alert-link' href='users.php'>View Users</a></p>";
     }
 ?>
 
