@@ -125,3 +125,7 @@
         </div>
     </form>
 <?php } } ?>
+
+<script>
+    CKEDITOR.replace('content');
+</script>

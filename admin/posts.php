@@ -1,4 +1,5 @@
 <?php include 'includes/layout/header.php'; ?>
+<script src="https://cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
 
     <div id="wrapper">
 
