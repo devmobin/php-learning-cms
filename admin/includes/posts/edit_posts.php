@@ -25,6 +25,7 @@
 
         confirm_query($sql_query);
 
+        echo "<p class='alert alert-success'>Post Updated. <a href='../post.php?id={$_GET['edit']}' class='alert-link'>See The Post.</a> or <a href='posts.php' class='alert-link'>Back to Posts page.</a></p>";
     }
 ?>
 
