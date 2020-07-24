@@ -1,19 +1,25 @@
 <?php // CREATE COMMENT
     if (isset($_POST['create_comment'])) {
-        $post_id = $_GET['id'];
+        if (empty($_POST['author']) || empty($_POST['email']) || empty($_POST['content'])) {
+            echo "<p class='alert alert-danger'>Please fill all the fields.</p>";
+        } else {
+            $post_id = $_GET['id'];
 
-        $query = "INSERT INTO comments (post, author, email, content, status, date) ";
-        $query .= "VALUES ('{$post_id}', '{$_POST['author']}', '{$_POST['email']}', '{$_POST['content']}', 'unapproved', now())";
-        $sql_query = mysqli_query($connection, $query);
+            $query = "INSERT INTO comments (post, author, email, content, status, date) ";
+            $query .= "VALUES ('{$post_id}', '{$_POST['author']}', '{$_POST['email']}', '{$_POST['content']}', 'unapproved', now())";
+            $sql_query = mysqli_query($connection, $query);
 
-        if (!$sql_query) {
-            die('Failed ' . mysqli_error($connection));
+            if (!$sql_query) {
+                die('Failed ' . mysqli_error($connection));
+            }
+
+            // increase the comments count
+            $comments_count_query = "UPDATE posts SET comments_count = comments_count + 1 ";
+            $comments_count_query .= "WHERE id = {$post_id}";
+            $comments_count_sql_query = mysqli_query($connection, $comments_count_query);
+            // feedback
+            echo "<p class='alert alert-success'>Your comment has been post. Please wait for approval. tnx.</p>";
         }
-
-        // increase the comments count
-        $comments_count_query = "UPDATE posts SET comments_count = comments_count + 1 ";
-        $comments_count_query .= "WHERE id = {$post_id}";
-        $comments_count_sql_query = mysqli_query($connection, $comments_count_query);
     }
 ?>
 <!-- Comments Form -->
