@@ -92,9 +92,15 @@
         <div class="form-group">
             <label for="status">Post Status</label>
             <select class="form-control" name="status" id="">
-                <option value="draft">Post Status</option>
-                <option value="published">Published</option>
-                <option value="draft">Draft</option>
+                <?php
+                    if ($post['status'] == 'draft') {
+                        echo "<option value='draft'>Draft</option>";
+                        echo "<option value='published'>Published</option>";
+                    } else {
+                        echo "<option value='published'>Published</option>";
+                        echo "<option value='draft'>Draft</option>";
+                    }
+                ?>
             </select>
         </div>
 
