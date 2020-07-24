@@ -151,6 +151,10 @@
     <!-- /#wrapper -->
 
     <?php
+        $query = "SELECT * FROM posts WHERE status = 'published'";
+        $sql_query = mysqli_query($connection, $query);
+        $published_posts_count = mysqli_num_rows($sql_query);
+
         $query = "SELECT * FROM posts WHERE status = 'draft'";
         $sql_query = mysqli_query($connection, $query);
         $draft_posts_count = mysqli_num_rows($sql_query);
@@ -172,8 +176,8 @@
             var data = google.visualization.arrayToDataTable([
                 ['Year', 'Count'],
                 <?php
-                    $element_text = ['Active Posts', 'Draft Posts', 'Categories', 'Users', 'Subscribers', 'Comments', 'Unapproved Comments'];
-                    $element_count = [$posts_count, $draft_posts_count, $categories_count, $users_count, $subscriber_users_count, $comments_count, $unapproved_comments_count];
+                    $element_text = ['Posts', 'Published Posts', 'Draft Posts', 'Categories', 'Users', 'Subscribers', 'Comments', 'Unapproved Comments'];
+                    $element_count = [$posts_count, $published_posts_count, $draft_posts_count, $categories_count, $users_count, $subscriber_users_count, $comments_count, $unapproved_comments_count];
 
                     for ($i = 0; $i < sizeof($element_count); $i++) {
                         echo "['{$element_text[$i]}', {$element_count[$i]}],";
