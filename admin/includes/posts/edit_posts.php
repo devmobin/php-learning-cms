@@ -93,12 +93,12 @@
             <label for="status">Post Status</label>
             <select class="form-control" name="status" id="">
                 <?php
-                    if ($post['status'] == 'draft') {
+                    echo "<option value='{$post['status']}'>". ucwords($post['status']) ."</option>";
+
+                    if ($post['status'] !== 'draft') {
                         echo "<option value='draft'>Draft</option>";
-                        echo "<option value='published'>Published</option>";
                     } else {
                         echo "<option value='published'>Published</option>";
-                        echo "<option value='draft'>Draft</option>";
                     }
                 ?>
             </select>
