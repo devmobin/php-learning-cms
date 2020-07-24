@@ -28,6 +28,15 @@
                     }
                 ?>
 
+                <?php
+                    session_start();
+                    if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
+                        if (strpos($_SERVER['REQUEST_URI'], 'post.php?id') !== false) {
+                            echo "<li> <a href='admin/posts.php?source=edit_post&edit={$_GET['id']}'>Edit Post</a> </li>";
+                        }
+                    }
+                ?>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->
